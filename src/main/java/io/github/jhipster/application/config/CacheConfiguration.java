@@ -43,6 +43,21 @@ public class CacheConfiguration {
             createCache(cm, io.github.jhipster.application.domain.User.class.getName());
             createCache(cm, io.github.jhipster.application.domain.Authority.class.getName());
             createCache(cm, io.github.jhipster.application.domain.User.class.getName() + ".authorities");
+            createCache(cm, io.github.jhipster.application.domain.Consultorio.class.getName());
+            createCache(cm, io.github.jhipster.application.domain.Pessoa.class.getName());
+            createCache(cm, io.github.jhipster.application.domain.Pessoa.class.getName() + ".consultas");
+            createCache(cm, io.github.jhipster.application.domain.Consulta.class.getName());
+            createCache(cm, io.github.jhipster.application.domain.Consulta.class.getName() + ".pessoas");
+            createCache(cm, io.github.jhipster.application.domain.Consulta.class.getName() + ".consultorios");
+            createCache(cm, io.github.jhipster.application.domain.Funcionario.class.getName());
+            createCache(cm, io.github.jhipster.application.domain.Funcionario.class.getName() + ".medicos");
+            createCache(cm, io.github.jhipster.application.domain.Funcionario.class.getName() + ".consultorios");
+            createCache(cm, io.github.jhipster.application.domain.Medico.class.getName());
+            createCache(cm, io.github.jhipster.application.domain.Medico.class.getName() + ".consultas");
+            createCache(cm, io.github.jhipster.application.domain.Tercerizado.class.getName());
+            createCache(cm, io.github.jhipster.application.domain.Tercerizado.class.getName() + ".funcionarios");
+            createCache(cm, io.github.jhipster.application.domain.Pagamento.class.getName());
+            createCache(cm, io.github.jhipster.application.domain.Pagamento.class.getName() + ".consultas");
             // jhipster-needle-ehcache-add-entry
         };
     }

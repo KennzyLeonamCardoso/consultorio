@@ -1,0 +1,39 @@
+{
+    "name": "Funcionario",
+    "fields": [
+        {
+            "fieldName": "numeroRegistro",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "medico",
+            "otherEntityRelationshipName": "funcionario",
+            "relationshipName": "medico"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tercerizado",
+            "otherEntityRelationshipName": "funcionario",
+            "relationshipName": "tercerizado",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "consultorio",
+            "otherEntityRelationshipName": "funcionario",
+            "relationshipName": "consultorio"
+        }
+    ],
+    "changelogDate": "20190909152441",
+    "entityTableName": "funcionario",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

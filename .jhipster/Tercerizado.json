@@ -1,0 +1,30 @@
+{
+    "name": "Tercerizado",
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "salario",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "funcionario",
+            "otherEntityRelationshipName": "tercerizado",
+            "relationshipName": "funcionario"
+        }
+    ],
+    "changelogDate": "20190909152443",
+    "entityTableName": "tercerizado",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
