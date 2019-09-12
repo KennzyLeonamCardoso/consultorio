@@ -1,0 +1,47 @@
+
+entity Consultorio{
+      nome String
+}
+entity Pessoa{
+      nome String,
+      cpf Integer,
+      sexo Boolean,
+}
+entity Consulta{
+      dataConsulta ZonedDateTime,
+      tipoProcedimento TipoProcedimento
+}
+entity Funcionario{
+      numeroRegistro Integer
+}
+entity Medico{
+      nome String,
+      salario Double
+}
+entity Tercerizado{
+      nome String,
+      salario Double
+}
+entity Pagamento{
+      valor Double,
+      tipoPagameno TipoPagamento
+}
+enum TipoPagamento{
+      AVISTA,PLANOSAUDE
+}
+enum TipoProcedimento{
+      LIMPEZA,OBTURACAO,EXTRACAO
+}
+relationship  ManyToMany{
+    Consulta{pessoa} to Pessoa{consulta}
+}
+relationship ManyToOne{
+    Consulta{pagamento} to Pagamento{consulta},
+     Consulta{medico} to Medico{consulta},
+      Funcionario{tercerizado} to Tercerizado{funcionario},
+      Consultorio{consultas} to Consulta{consultorio},
+    Consultorio{funcionario} to Funcionario{consultorio}
+}
+relationship OneToMany{
+    Funcionario{medico} to Medico{funcionario}
+}
