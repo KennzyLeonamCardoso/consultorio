@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span>Consultas</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-consulta" [routerLink]="['/consulta/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Consulta
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="consultas?.length === 0">
+        <span>No consultas found</span>
+    </div>
+    <div class="table-responsive" *ngIf="consultas?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Data Consulta</span></th>
+            <th><span>Tipo Procedimento</span></th>
+            <th><span>Pagamento</span></th>
+            <th><span>Medico</span></th>
+            <th><span>Pessoa</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let consulta of consultas ;trackBy: trackId">
+                <td><a [routerLink]="['/consulta', consulta.id, 'view' ]">{{consulta.id}}</a></td>
+                <td>{{consulta.dataConsulta | date:'medium'}}</td>
+                <td>{{consulta.tipoProcedimento}}</td>
+                <td>
+                    <div *ngIf="consulta.pagamento">
+                        <a [routerLink]="['/pagamento', consulta.pagamento?.id, 'view' ]" >{{consulta.pagamento?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="consulta.medico">
+                        <a [routerLink]="['/medico', consulta.medico?.id, 'view' ]" >{{consulta.medico?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <span *ngFor="let pessoa of consulta.pessoas; let last = last">
+                            <a class="form-control-static" [routerLink]="['/pessoa', pessoa?.id, 'view' ]">{{pessoa.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/consulta', consulta.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/consulta', consulta.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/consulta', { outlets: { popup: consulta.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

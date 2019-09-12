@@ -1,0 +1,37 @@
+{
+    "name": "Medico",
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "salario",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "funcionario",
+            "otherEntityRelationshipName": "medico",
+            "relationshipName": "funcionario",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "consulta",
+            "otherEntityRelationshipName": "medico",
+            "relationshipName": "consulta"
+        }
+    ],
+    "changelogDate": "20190912200522",
+    "entityTableName": "medico",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
