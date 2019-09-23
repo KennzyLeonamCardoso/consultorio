@@ -1,16 +1,12 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { ConsultorioSharedModule } from 'app/shared';
-import {
-  PagamentoComponent,
-  PagamentoDetailComponent,
-  PagamentoUpdateComponent,
-  PagamentoDeletePopupComponent,
-  PagamentoDeleteDialogComponent,
-  pagamentoRoute,
-  pagamentoPopupRoute
-} from './';
+import { ConsultorioSharedModule } from 'app/shared/shared.module';
+import { PagamentoComponent } from './pagamento.component';
+import { PagamentoDetailComponent } from './pagamento-detail.component';
+import { PagamentoUpdateComponent } from './pagamento-update.component';
+import { PagamentoDeletePopupComponent, PagamentoDeleteDialogComponent } from './pagamento-delete-dialog.component';
+import { pagamentoRoute, pagamentoPopupRoute } from './pagamento.route';
 
 const ENTITY_STATES = [...pagamentoRoute, ...pagamentoPopupRoute];
 
@@ -23,7 +19,6 @@ const ENTITY_STATES = [...pagamentoRoute, ...pagamentoPopupRoute];
     PagamentoDeleteDialogComponent,
     PagamentoDeletePopupComponent
   ],
-  entryComponents: [PagamentoComponent, PagamentoUpdateComponent, PagamentoDeleteDialogComponent, PagamentoDeletePopupComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  entryComponents: [PagamentoDeleteDialogComponent]
 })
 export class ConsultorioPagamentoModule {}

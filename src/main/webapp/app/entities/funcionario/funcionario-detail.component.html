@@ -9,11 +9,13 @@
                 <dd>
                     <span>{{funcionario.numeroRegistro}}</span>
                 </dd>
-                <dt><span>Tercerizado</span></dt>
+                <dt><span>Nome</span></dt>
                 <dd>
-                    <div *ngIf="funcionario.tercerizado">
-                        <a [routerLink]="['/tercerizado', funcionario.tercerizado?.id, 'view']">{{funcionario.tercerizado?.id}}</a>
-                    </div>
+                    <span>{{funcionario.nome}}</span>
+                </dd>
+                <dt><span>Salario</span></dt>
+                <dd>
+                    <span>{{funcionario.salario}}</span>
                 </dd>
             </dl>
 

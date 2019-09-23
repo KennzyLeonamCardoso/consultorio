@@ -1,9 +1,5 @@
 import { IConsulta } from 'app/shared/model/consulta.model';
-
-export const enum TipoPagamento {
-  AVISTA = 'AVISTA',
-  PLANOSAUDE = 'PLANOSAUDE'
-}
+import { TipoPagamento } from 'app/shared/model/enumerations/tipo-pagamento.model';
 
 export interface IPagamento {
   id?: number;

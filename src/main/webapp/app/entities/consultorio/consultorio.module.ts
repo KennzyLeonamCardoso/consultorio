@@ -1,16 +1,12 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { ConsultorioSharedModule } from 'app/shared';
-import {
-  ConsultorioComponent,
-  ConsultorioDetailComponent,
-  ConsultorioUpdateComponent,
-  ConsultorioDeletePopupComponent,
-  ConsultorioDeleteDialogComponent,
-  consultorioRoute,
-  consultorioPopupRoute
-} from './';
+import { ConsultorioSharedModule } from 'app/shared/shared.module';
+import { ConsultorioComponent } from './consultorio.component';
+import { ConsultorioDetailComponent } from './consultorio-detail.component';
+import { ConsultorioUpdateComponent } from './consultorio-update.component';
+import { ConsultorioDeletePopupComponent, ConsultorioDeleteDialogComponent } from './consultorio-delete-dialog.component';
+import { consultorioRoute, consultorioPopupRoute } from './consultorio.route';
 
 const ENTITY_STATES = [...consultorioRoute, ...consultorioPopupRoute];
 
@@ -23,7 +19,6 @@ const ENTITY_STATES = [...consultorioRoute, ...consultorioPopupRoute];
     ConsultorioDeleteDialogComponent,
     ConsultorioDeletePopupComponent
   ],
-  entryComponents: [ConsultorioComponent, ConsultorioUpdateComponent, ConsultorioDeleteDialogComponent, ConsultorioDeletePopupComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  entryComponents: [ConsultorioDeleteDialogComponent]
 })
 export class ConsultorioConsultorioModule {}

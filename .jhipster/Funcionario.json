@@ -4,22 +4,17 @@
         {
             "fieldName": "numeroRegistro",
             "fieldType": "Integer"
+        },
+        {
+            "fieldName": "nome",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "salario",
+            "fieldType": "Double"
         }
     ],
     "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "medico",
-            "otherEntityRelationshipName": "funcionario",
-            "relationshipName": "medico"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "tercerizado",
-            "otherEntityRelationshipName": "funcionario",
-            "relationshipName": "tercerizado",
-            "otherEntityField": "id"
-        },
         {
             "relationshipType": "one-to-many",
             "otherEntityName": "consultorio",
