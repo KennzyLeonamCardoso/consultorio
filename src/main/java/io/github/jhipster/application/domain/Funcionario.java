@@ -1,5 +1,4 @@
 package io.github.jhipster.application.domain;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -26,13 +25,11 @@ public class Funcionario implements Serializable {
     @Column(name = "numero_registro")
     private Integer numeroRegistro;
 
-    @OneToMany(mappedBy = "funcionario")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Medico> medicos = new HashSet<>();
+    @Column(name = "nome")
+    private String nome;
 
-    @ManyToOne
-    @JsonIgnoreProperties("funcionarios")
-    private Tercerizado tercerizado;
+    @Column(name = "salario")
+    private Double salario;
 
     @OneToMany(mappedBy = "funcionario")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -60,42 +57,30 @@ public class Funcionario implements Serializable {
         this.numeroRegistro = numeroRegistro;
     }
 
-    public Set<Medico> getMedicos() {
-        return medicos;
+    public String getNome() {
+        return nome;
     }
 
-    public Funcionario medicos(Set<Medico> medicos) {
-        this.medicos = medicos;
+    public Funcionario nome(String nome) {
+        this.nome = nome;
         return this;
     }
 
-    public Funcionario addMedico(Medico medico) {
-        this.medicos.add(medico);
-        medico.setFuncionario(this);
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Double getSalario() {
+        return salario;
+    }
+
+    public Funcionario salario(Double salario) {
+        this.salario = salario;
         return this;
     }
 
-    public Funcionario removeMedico(Medico medico) {
-        this.medicos.remove(medico);
-        medico.setFuncionario(null);
-        return this;
-    }
-
-    public void setMedicos(Set<Medico> medicos) {
-        this.medicos = medicos;
-    }
-
-    public Tercerizado getTercerizado() {
-        return tercerizado;
-    }
-
-    public Funcionario tercerizado(Tercerizado tercerizado) {
-        this.tercerizado = tercerizado;
-        return this;
-    }
-
-    public void setTercerizado(Tercerizado tercerizado) {
-        this.tercerizado = tercerizado;
+    public void setSalario(Double salario) {
+        this.salario = salario;
     }
 
     public Set<Consultorio> getConsultorios() {
@@ -145,6 +130,8 @@ public class Funcionario implements Serializable {
         return "Funcionario{" +
             "id=" + getId() +
             ", numeroRegistro=" + getNumeroRegistro() +
+            ", nome='" + getNome() + "'" +
+            ", salario=" + getSalario() +
             "}";
     }
 }

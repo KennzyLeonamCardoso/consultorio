@@ -19,12 +19,6 @@
                         <a [routerLink]="['/pagamento', consulta.pagamento?.id, 'view']">{{consulta.pagamento?.id}}</a>
                     </div>
                 </dd>
-                <dt><span>Medico</span></dt>
-                <dd>
-                    <div *ngIf="consulta.medico">
-                        <a [routerLink]="['/medico', consulta.medico?.id, 'view']">{{consulta.medico?.id}}</a>
-                    </div>
-                </dd>
                 <dt><span>Pessoa</span></dt>
                 <dd>
                     <span *ngFor="let pessoa of consulta.pessoas; let last = last">

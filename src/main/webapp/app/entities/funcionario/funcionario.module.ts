@@ -1,16 +1,12 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { ConsultorioSharedModule } from 'app/shared';
-import {
-  FuncionarioComponent,
-  FuncionarioDetailComponent,
-  FuncionarioUpdateComponent,
-  FuncionarioDeletePopupComponent,
-  FuncionarioDeleteDialogComponent,
-  funcionarioRoute,
-  funcionarioPopupRoute
-} from './';
+import { ConsultorioSharedModule } from 'app/shared/shared.module';
+import { FuncionarioComponent } from './funcionario.component';
+import { FuncionarioDetailComponent } from './funcionario-detail.component';
+import { FuncionarioUpdateComponent } from './funcionario-update.component';
+import { FuncionarioDeletePopupComponent, FuncionarioDeleteDialogComponent } from './funcionario-delete-dialog.component';
+import { funcionarioRoute, funcionarioPopupRoute } from './funcionario.route';
 
 const ENTITY_STATES = [...funcionarioRoute, ...funcionarioPopupRoute];
 
@@ -23,7 +19,6 @@ const ENTITY_STATES = [...funcionarioRoute, ...funcionarioPopupRoute];
     FuncionarioDeleteDialogComponent,
     FuncionarioDeletePopupComponent
   ],
-  entryComponents: [FuncionarioComponent, FuncionarioUpdateComponent, FuncionarioDeleteDialogComponent, FuncionarioDeletePopupComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  entryComponents: [FuncionarioDeleteDialogComponent]
 })
 export class ConsultorioFuncionarioModule {}

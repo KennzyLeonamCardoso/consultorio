@@ -14,14 +14,13 @@
         <span>No consultas found</span>
     </div>
     <div class="table-responsive" *ngIf="consultas?.length > 0">
-        <table class="table table-striped">
+        <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr>
             <th><span>ID</span></th>
             <th><span>Data Consulta</span></th>
             <th><span>Tipo Procedimento</span></th>
             <th><span>Pagamento</span></th>
-            <th><span>Medico</span></th>
             <th><span>Pessoa</span></th>
             <th></th>
             </tr>
@@ -34,11 +33,6 @@
                 <td>
                     <div *ngIf="consulta.pagamento">
                         <a [routerLink]="['/pagamento', consulta.pagamento?.id, 'view' ]" >{{consulta.pagamento?.id}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="consulta.medico">
-                        <a [routerLink]="['/medico', consulta.medico?.id, 'view' ]" >{{consulta.medico?.id}}</a>
                     </div>
                 </td>
                 <td>

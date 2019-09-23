@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -8,9 +10,9 @@ import { JhiAlertService } from 'ng-jhipster';
 import { IConsultorio, Consultorio } from 'app/shared/model/consultorio.model';
 import { ConsultorioService } from './consultorio.service';
 import { IConsulta } from 'app/shared/model/consulta.model';
-import { ConsultaService } from 'app/entities/consulta';
+import { ConsultaService } from 'app/entities/consulta/consulta.service';
 import { IFuncionario } from 'app/shared/model/funcionario.model';
-import { FuncionarioService } from 'app/entities/funcionario';
+import { FuncionarioService } from 'app/entities/funcionario/funcionario.service';
 
 @Component({
   selector: 'jhi-consultorio-update',

@@ -20,13 +20,6 @@
             "otherEntityField": "id"
         },
         {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "medico",
-            "otherEntityRelationshipName": "consulta",
-            "relationshipName": "medico",
-            "otherEntityField": "id"
-        },
-        {
             "relationshipType": "many-to-many",
             "otherEntityName": "pessoa",
             "otherEntityRelationshipName": "consulta",

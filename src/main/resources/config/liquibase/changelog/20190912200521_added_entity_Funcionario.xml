@@ -6,7 +6,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <property name="autoIncrement" value="true"/>
+        <property name="autoIncrement" value="true"/>
 
     <!--
         Added the entity Funcionario.
@@ -19,14 +19,14 @@
             <column name="numero_registro" type="integer">
                 <constraints nullable="true" />
             </column>
-
-            <column name="tercerizado_id" type="bigint">
+            <column name="nome" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-
+            <column name="salario" type="double">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-
     </changeSet>
 
     <changeSet id="20190912200521-1-relations" author="jhipster">
@@ -49,6 +49,8 @@
                   tableName="funcionario">
             <column name="id" type="numeric"/>
             <column name="numero_registro" type="numeric"/>
+            <column name="nome" type="string"/>
+            <column name="salario" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

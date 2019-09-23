@@ -6,7 +6,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <property name="autoIncrement" value="true"/>
+        <property name="autoIncrement" value="true"/>
 
     <!--
         Added the entity Consulta.
@@ -19,22 +19,14 @@
             <column name="data_consulta" type="datetime">
                 <constraints nullable="true" />
             </column>
-
             <column name="tipo_procedimento" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-
             <column name="pagamento_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-
-            <column name="medico_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-
         <dropDefaultValue tableName="consulta" columnName="data_consulta" columnDataType="datetime"/>
     </changeSet>
 

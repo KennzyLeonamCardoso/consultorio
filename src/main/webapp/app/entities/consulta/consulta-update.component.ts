@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -10,11 +12,9 @@ import { JhiAlertService } from 'ng-jhipster';
 import { IConsulta, Consulta } from 'app/shared/model/consulta.model';
 import { ConsultaService } from './consulta.service';
 import { IPagamento } from 'app/shared/model/pagamento.model';
-import { PagamentoService } from 'app/entities/pagamento';
-import { IMedico } from 'app/shared/model/medico.model';
-import { MedicoService } from 'app/entities/medico';
+import { PagamentoService } from 'app/entities/pagamento/pagamento.service';
 import { IPessoa } from 'app/shared/model/pessoa.model';
-import { PessoaService } from 'app/entities/pessoa';
+import { PessoaService } from 'app/entities/pessoa/pessoa.service';
 
 @Component({
   selector: 'jhi-consulta-update',
@@ -25,8 +25,6 @@ export class ConsultaUpdateComponent implements OnInit {
 
   pagamentos: IPagamento[];
 
-  medicos: IMedico[];
-
   pessoas: IPessoa[];
 
   editForm = this.fb.group({
@@ -34,7 +32,6 @@ export class ConsultaUpdateComponent implements OnInit {
     dataConsulta: [],
     tipoProcedimento: [],
     pagamento: [],
-    medico: [],
     pessoas: []
   });
 
@@ -42,7 +39,6 @@ export class ConsultaUpdateComponent implements OnInit {
     protected jhiAlertService: JhiAlertService,
     protected consultaService: ConsultaService,
     protected pagamentoService: PagamentoService,
-    protected medicoService: MedicoService,
     protected pessoaService: PessoaService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -60,13 +56,6 @@ export class ConsultaUpdateComponent implements OnInit {
         map((response: HttpResponse<IPagamento[]>) => response.body)
       )
       .subscribe((res: IPagamento[]) => (this.pagamentos = res), (res: HttpErrorResponse) => this.onError(res.message));
-    this.medicoService
-      .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<IMedico[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IMedico[]>) => response.body)
-      )
-      .subscribe((res: IMedico[]) => (this.medicos = res), (res: HttpErrorResponse) => this.onError(res.message));
     this.pessoaService
       .query()
       .pipe(
@@ -82,7 +71,6 @@ export class ConsultaUpdateComponent implements OnInit {
       dataConsulta: consulta.dataConsulta != null ? consulta.dataConsulta.format(DATE_TIME_FORMAT) : null,
       tipoProcedimento: consulta.tipoProcedimento,
       pagamento: consulta.pagamento,
-      medico: consulta.medico,
       pessoas: consulta.pessoas
     });
   }
@@ -109,7 +97,6 @@ export class ConsultaUpdateComponent implements OnInit {
         this.editForm.get(['dataConsulta']).value != null ? moment(this.editForm.get(['dataConsulta']).value, DATE_TIME_FORMAT) : undefined,
       tipoProcedimento: this.editForm.get(['tipoProcedimento']).value,
       pagamento: this.editForm.get(['pagamento']).value,
-      medico: this.editForm.get(['medico']).value,
       pessoas: this.editForm.get(['pessoas']).value
     };
   }
@@ -134,15 +121,11 @@ export class ConsultaUpdateComponent implements OnInit {
     return item.id;
   }
 
-  trackMedicoById(index: number, item: IMedico) {
-    return item.id;
-  }
-
   trackPessoaById(index: number, item: IPessoa) {
     return item.id;
   }
 
-  getSelected(selectedVals: Array<any>, option: any) {
+  getSelected(selectedVals: any[], option: any) {
     if (selectedVals) {
       for (let i = 0; i < selectedVals.length; i++) {
         if (option.id === selectedVals[i].id) {

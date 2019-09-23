@@ -12,13 +12,7 @@ entity Consulta{
       tipoProcedimento TipoProcedimento
 }
 entity Funcionario{
-      numeroRegistro Integer
-}
-entity Medico{
-      nome String,
-      salario Double
-}
-entity Tercerizado{
+      numeroRegistro Integer,
       nome String,
       salario Double
 }
@@ -37,11 +31,7 @@ relationship  ManyToMany{
 }
 relationship ManyToOne{
     Consulta{pagamento} to Pagamento{consulta},
-     Consulta{medico} to Medico{consulta},
-      Funcionario{tercerizado} to Tercerizado{funcionario},
       Consultorio{consultas} to Consulta{consultorio},
     Consultorio{funcionario} to Funcionario{consultorio}
 }
-relationship OneToMany{
-    Funcionario{medico} to Medico{funcionario}
-}
+

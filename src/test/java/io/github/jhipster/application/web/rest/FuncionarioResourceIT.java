@@ -37,6 +37,13 @@ public class FuncionarioResourceIT {
     private static final Integer UPDATED_NUMERO_REGISTRO = 2;
     private static final Integer SMALLER_NUMERO_REGISTRO = 1 - 1;
 
+    private static final String DEFAULT_NOME = "AAAAAAAAAA";
+    private static final String UPDATED_NOME = "BBBBBBBBBB";
+
+    private static final Double DEFAULT_SALARIO = 1D;
+    private static final Double UPDATED_SALARIO = 2D;
+    private static final Double SMALLER_SALARIO = 1D - 1D;
+
     @Autowired
     private FuncionarioRepository funcionarioRepository;
 
@@ -79,7 +86,9 @@ public class FuncionarioResourceIT {
      */
     public static Funcionario createEntity(EntityManager em) {
         Funcionario funcionario = new Funcionario()
-            .numeroRegistro(DEFAULT_NUMERO_REGISTRO);
+            .numeroRegistro(DEFAULT_NUMERO_REGISTRO)
+            .nome(DEFAULT_NOME)
+            .salario(DEFAULT_SALARIO);
         return funcionario;
     }
     /**
@@ -90,7 +99,9 @@ public class FuncionarioResourceIT {
      */
     public static Funcionario createUpdatedEntity(EntityManager em) {
         Funcionario funcionario = new Funcionario()
-            .numeroRegistro(UPDATED_NUMERO_REGISTRO);
+            .numeroRegistro(UPDATED_NUMERO_REGISTRO)
+            .nome(UPDATED_NOME)
+            .salario(UPDATED_SALARIO);
         return funcionario;
     }
 
@@ -115,6 +126,8 @@ public class FuncionarioResourceIT {
         assertThat(funcionarioList).hasSize(databaseSizeBeforeCreate + 1);
         Funcionario testFuncionario = funcionarioList.get(funcionarioList.size() - 1);
         assertThat(testFuncionario.getNumeroRegistro()).isEqualTo(DEFAULT_NUMERO_REGISTRO);
+        assertThat(testFuncionario.getNome()).isEqualTo(DEFAULT_NOME);
+        assertThat(testFuncionario.getSalario()).isEqualTo(DEFAULT_SALARIO);
     }
 
     @Test
@@ -148,7 +161,9 @@ public class FuncionarioResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(funcionario.getId().intValue())))
-            .andExpect(jsonPath("$.[*].numeroRegistro").value(hasItem(DEFAULT_NUMERO_REGISTRO)));
+            .andExpect(jsonPath("$.[*].numeroRegistro").value(hasItem(DEFAULT_NUMERO_REGISTRO)))
+            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME.toString())))
+            .andExpect(jsonPath("$.[*].salario").value(hasItem(DEFAULT_SALARIO.doubleValue())));
     }
     
     @Test
@@ -162,7 +177,9 @@ public class FuncionarioResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(funcionario.getId().intValue()))
-            .andExpect(jsonPath("$.numeroRegistro").value(DEFAULT_NUMERO_REGISTRO));
+            .andExpect(jsonPath("$.numeroRegistro").value(DEFAULT_NUMERO_REGISTRO))
+            .andExpect(jsonPath("$.nome").value(DEFAULT_NOME.toString()))
+            .andExpect(jsonPath("$.salario").value(DEFAULT_SALARIO.doubleValue()));
     }
 
     @Test
@@ -186,7 +203,9 @@ public class FuncionarioResourceIT {
         // Disconnect from session so that the updates on updatedFuncionario are not directly saved in db
         em.detach(updatedFuncionario);
         updatedFuncionario
-            .numeroRegistro(UPDATED_NUMERO_REGISTRO);
+            .numeroRegistro(UPDATED_NUMERO_REGISTRO)
+            .nome(UPDATED_NOME)
+            .salario(UPDATED_SALARIO);
 
         restFuncionarioMockMvc.perform(put("/api/funcionarios")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -198,6 +217,8 @@ public class FuncionarioResourceIT {
         assertThat(funcionarioList).hasSize(databaseSizeBeforeUpdate);
         Funcionario testFuncionario = funcionarioList.get(funcionarioList.size() - 1);
         assertThat(testFuncionario.getNumeroRegistro()).isEqualTo(UPDATED_NUMERO_REGISTRO);
+        assertThat(testFuncionario.getNome()).isEqualTo(UPDATED_NOME);
+        assertThat(testFuncionario.getSalario()).isEqualTo(UPDATED_SALARIO);
     }
 
     @Test

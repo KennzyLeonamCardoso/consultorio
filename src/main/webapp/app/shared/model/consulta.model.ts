@@ -1,21 +1,14 @@
 import { Moment } from 'moment';
 import { IPagamento } from 'app/shared/model/pagamento.model';
-import { IMedico } from 'app/shared/model/medico.model';
 import { IPessoa } from 'app/shared/model/pessoa.model';
 import { IConsultorio } from 'app/shared/model/consultorio.model';
-
-export const enum TipoProcedimento {
-  LIMPEZA = 'LIMPEZA',
-  OBTURACAO = 'OBTURACAO',
-  EXTRACAO = 'EXTRACAO'
-}
+import { TipoProcedimento } from 'app/shared/model/enumerations/tipo-procedimento.model';
 
 export interface IConsulta {
   id?: number;
   dataConsulta?: Moment;
   tipoProcedimento?: TipoProcedimento;
   pagamento?: IPagamento;
-  medico?: IMedico;
   pessoas?: IPessoa[];
   consultorios?: IConsultorio[];
 }
@@ -26,7 +19,6 @@ export class Consulta implements IConsulta {
     public dataConsulta?: Moment,
     public tipoProcedimento?: TipoProcedimento,
     public pagamento?: IPagamento,
-    public medico?: IMedico,
     public pessoas?: IPessoa[],
     public consultorios?: IConsultorio[]
   ) {}

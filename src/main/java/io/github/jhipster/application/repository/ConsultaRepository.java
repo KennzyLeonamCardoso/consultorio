@@ -1,5 +1,4 @@
 package io.github.jhipster.application.repository;
-
 import io.github.jhipster.application.domain.Consulta;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

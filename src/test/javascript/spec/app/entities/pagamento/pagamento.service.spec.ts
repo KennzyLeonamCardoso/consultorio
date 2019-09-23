@@ -1,11 +1,9 @@
-/* tslint:disable max-line-length */
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { of } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 import { PagamentoService } from 'app/entities/pagamento/pagamento.service';
-import { IPagamento, Pagamento, TipoPagamento } from 'app/shared/model/pagamento.model';
+import { IPagamento, Pagamento } from 'app/shared/model/pagamento.model';
+import { TipoPagamento } from 'app/shared/model/enumerations/tipo-pagamento.model';
 
 describe('Service Tests', () => {
   describe('Pagamento Service', () => {
@@ -27,7 +25,7 @@ describe('Service Tests', () => {
     });
 
     describe('Service methods', () => {
-      it('should find an element', async () => {
+      it('should find an element', () => {
         const returnedFromService = Object.assign({}, elemDefault);
         service
           .find(123)
@@ -39,7 +37,7 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject({ body: elemDefault });
       });
 
-      it('should create a Pagamento', async () => {
+      it('should create a Pagamento', () => {
         const returnedFromService = Object.assign(
           {
             id: 0
@@ -56,7 +54,7 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject({ body: expected });
       });
 
-      it('should update a Pagamento', async () => {
+      it('should update a Pagamento', () => {
         const returnedFromService = Object.assign(
           {
             valor: 1,
@@ -75,7 +73,7 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject({ body: expected });
       });
 
-      it('should return a list of Pagamento', async () => {
+      it('should return a list of Pagamento', () => {
         const returnedFromService = Object.assign(
           {
             valor: 1,
@@ -97,8 +95,8 @@ describe('Service Tests', () => {
         expect(expectedResult).toContainEqual(expected);
       });
 
-      it('should delete a Pagamento', async () => {
-        const rxPromise = service.delete(123).subscribe(resp => (expectedResult = resp.ok));
+      it('should delete a Pagamento', () => {
+        service.delete(123).subscribe(resp => (expectedResult = resp.ok));
 
         const req = httpMock.expectOne({ method: 'DELETE' });
         req.flush({ status: 200 });

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -8,7 +10,7 @@ import { JhiAlertService } from 'ng-jhipster';
 import { IPessoa, Pessoa } from 'app/shared/model/pessoa.model';
 import { PessoaService } from './pessoa.service';
 import { IConsulta } from 'app/shared/model/consulta.model';
-import { ConsultaService } from 'app/entities/consulta';
+import { ConsultaService } from 'app/entities/consulta/consulta.service';
 
 @Component({
   selector: 'jhi-pessoa-update',
@@ -101,7 +103,7 @@ export class PessoaUpdateComponent implements OnInit {
     return item.id;
   }
 
-  getSelected(selectedVals: Array<any>, option: any) {
+  getSelected(selectedVals: any[], option: any) {
     if (selectedVals) {
       for (let i = 0; i < selectedVals.length; i++) {
         if (option.id === selectedVals[i].id) {

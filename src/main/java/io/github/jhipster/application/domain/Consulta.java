@@ -37,10 +37,6 @@ public class Consulta implements Serializable {
     @JsonIgnoreProperties("consultas")
     private Pagamento pagamento;
 
-    @ManyToOne
-    @JsonIgnoreProperties("consultas")
-    private Medico medico;
-
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "consulta_pessoa",
@@ -98,19 +94,6 @@ public class Consulta implements Serializable {
 
     public void setPagamento(Pagamento pagamento) {
         this.pagamento = pagamento;
-    }
-
-    public Medico getMedico() {
-        return medico;
-    }
-
-    public Consulta medico(Medico medico) {
-        this.medico = medico;
-        return this;
-    }
-
-    public void setMedico(Medico medico) {
-        this.medico = medico;
     }
 
     public Set<Pessoa> getPessoas() {

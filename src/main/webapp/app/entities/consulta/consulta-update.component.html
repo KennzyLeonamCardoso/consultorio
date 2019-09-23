@@ -32,13 +32,6 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_medico">Medico</label>
-                    <select class="form-control" id="field_medico" name="medico" formControlName="medico">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="medicoOption.id === editForm.get('medico').value?.id ? editForm.get('medico').value : medicoOption" *ngFor="let medicoOption of medicos; trackBy: trackMedicoById">{{medicoOption.id}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label for="field_pessoas">Pessoa</label>
                     <select class="form-control" id="field_pessoas" multiple name="pessoas" formControlName="pessoas">
                         <option [ngValue]="getSelected(editForm.get('pessoas').value, pessoaOption)" *ngFor="let pessoaOption of pessoas; trackBy: trackPessoaById">{{pessoaOption.id}}</option>

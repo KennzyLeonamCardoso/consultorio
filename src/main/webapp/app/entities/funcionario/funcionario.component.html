@@ -14,12 +14,13 @@
         <span>No funcionarios found</span>
     </div>
     <div class="table-responsive" *ngIf="funcionarios?.length > 0">
-        <table class="table table-striped">
+        <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr>
             <th><span>ID</span></th>
             <th><span>Numero Registro</span></th>
-            <th><span>Tercerizado</span></th>
+            <th><span>Nome</span></th>
+            <th><span>Salario</span></th>
             <th></th>
             </tr>
             </thead>
@@ -27,11 +28,8 @@
             <tr *ngFor="let funcionario of funcionarios ;trackBy: trackId">
                 <td><a [routerLink]="['/funcionario', funcionario.id, 'view' ]">{{funcionario.id}}</a></td>
                 <td>{{funcionario.numeroRegistro}}</td>
-                <td>
-                    <div *ngIf="funcionario.tercerizado">
-                        <a [routerLink]="['/tercerizado', funcionario.tercerizado?.id, 'view' ]" >{{funcionario.tercerizado?.id}}</a>
-                    </div>
-                </td>
+                <td>{{funcionario.nome}}</td>
+                <td>{{funcionario.salario}}</td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

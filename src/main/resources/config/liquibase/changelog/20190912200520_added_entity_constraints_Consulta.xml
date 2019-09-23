@@ -14,12 +14,6 @@
                                  referencedColumnNames="id"
                                  referencedTableName="pagamento"/>
 
-        <addForeignKeyConstraint baseColumnNames="medico_id"
-                                 baseTableName="consulta"
-                                 constraintName="fk_consulta_medico_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="medico"/>
-
         <addForeignKeyConstraint baseColumnNames="consulta_id"
                                  baseTableName="consulta_pessoa"
                                  constraintName="fk_consulta_pessoa_consulta_id"
